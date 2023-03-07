@@ -1,11 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        ContaBancaria banco = new ContaBancaria();
+        ContaBancaria cliente = new ContaBancaria();
 
-        banco.setPagamento(new PagamentoCredito());
-        banco.realizarPagamento();
+        cliente.setPagamento(new PagamentoCredito());
+        cliente.realizarPagamento();
 
-        banco.setPagamento(new PagamentoDebito());
-        banco.realizarPagamento();
+        cliente.setPagamento(new PagamentoDebito());
+        cliente.realizarPagamento();
     }
 }
