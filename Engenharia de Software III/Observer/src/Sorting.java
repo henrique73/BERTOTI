@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Sorting implements Subject{
+public class Sorting{
 
     private ArrayList observers;
     private User[] users;

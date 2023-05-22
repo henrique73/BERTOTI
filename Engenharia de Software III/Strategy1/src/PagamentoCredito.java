@@ -1,4 +1,4 @@
-public class PagamentoCredito extends Pagamento {
+public class PagamentoCredito implements Pagamento {
 
     public void pagar() {
 
