@@ -1,30 +1,40 @@
+import Strategy.PaymentCredit;
+import Strategy.PaymentDebit;
+import Singleton.User;
+
 public class Controller implements controllerInterface{
     View view;
-    Subject model;
-    public Controller(Subject mo){
-        this.model = mo;
-        view = new View(model, this);
+    User user;
+
+    public Controller(User user){
+        this.user = user;
+        view = new View(user,this);
         view.createView();
-        view.desabilitarBotaoDesconectar();
-
+        user.registerObserver(view);
     }
 
-    public void conectar(){
-
-        model.registerObserver(view);
-        System.out.println("Conectado ao mercado de açoes");
-        view.desabilitarBotaoConectar();
-        view.habilitarBotaoDesconectar();
-
+    public void comprarGoogle(double value){
+        user.charge(value);
     }
 
-    public void desconectar(){
+    public void comprarAmazon(double value){
+        user.charge(value);
+    }
 
-        model.removeObserver(view);
-        System.out.println("Desconectado");
-        view.desabilitarBotaoDesconectar();
-        view.habilitarBotaoConectar();
+    public void comprarFacebook(double value){
+        user.charge(value);
+    }
 
+    public void selectDebit(){
+        view.desabilitarBotaoDebito();
+        user.setStrategy(new PaymentDebit());
+        view.habilitarBotaoCredito();
+    }
+
+    public void selectCredit(){
+        view.desabilitarBotaoCredito();
+        user.setStrategy(new PaymentCredit());
+        view.habilitarBotaoDebito();
     }
 
 }
